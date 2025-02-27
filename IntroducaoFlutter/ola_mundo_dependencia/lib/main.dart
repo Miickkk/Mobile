@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MainApp());
 }
 
-class MyApp extends StatelessWidget{
-  Widget build(BuildContext context) {
-    return MaterialApp()
-  }
+class MainApp extends StatelessWidget {
+  const 
 }
+
+@override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Exemplo Scaffold"),
+      ),
+    ),
+  );
