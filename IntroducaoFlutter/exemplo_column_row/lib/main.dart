@@ -25,9 +25,18 @@ class MainApp extends StatelessWidget {
                 Text("Coluna 2")
               ],
             ),
-            Text("Linha 3")
+            Text("Linha 3"),
+            Stack(
+             alignment: Alignment.center, // Centraliza os elementos na pilha
+             children: [
+               Container(
+                 width: 200,
+                 height: 200,
+                 color: Colors.blue,
+               ),
           ],
-        )
+         ),
+        ),
       ),
     );
   }

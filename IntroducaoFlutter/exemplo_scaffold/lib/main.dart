@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Exemplo Scaffold"),
-          backgroundColor: const Color.fromARGB(255, 178, 95, 255),
+          backgroundColor: const Color.fromARGB(255, 66, 41, 90),
       ),
       drawer: Drawer(
         child: ListView(
