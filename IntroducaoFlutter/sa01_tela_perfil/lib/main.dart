@@ -217,9 +217,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
 
-
               SizedBox(height: 170),
-
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
