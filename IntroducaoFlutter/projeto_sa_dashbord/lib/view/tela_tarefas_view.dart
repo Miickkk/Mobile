@@ -25,14 +25,29 @@ class TelaTarefas extends StatelessWidget { // Classe da tela de tarefas (sem es
           IconButton(icon: Icon(Icons.notifications), onPressed: () {}), // Ícone de notificações
         ],
       ),
-      drawer: Drawer( // Menu lateral do app
-        child: ListView( // Lista com opções dentro do menu
+     drawer: Drawer(
+        child: ListView(
           children: [
-            Text("Configurações"), // Opções do menu
-            Text("Notificações"),
-            Text("Temas"),
-            Text("Perfil"),
-            Text("Ajuda"),
+            Text(
+              "Configurações",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Notificações",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Temas",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Perfil",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Ajuda",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
           ],
         ),
       ),
