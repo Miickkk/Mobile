@@ -24,14 +24,29 @@ class TelaInfografico extends StatelessWidget {
         title: Text("Adicionar Tarefa"), 
         backgroundColor: Colors.grey[300],
       ),
-      drawer: Drawer( // Menu lateral
+    drawer: Drawer(
         child: ListView(
-          children: [ // Itens dentro do menu lateral.
-            Text("Configurações"),
-            Text("Notificações"),
-            Text("Temas"),
-            Text("Perfil"),
-            Text("Ajuda"),
+          children: [
+            Text(
+              "Configurações",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Notificações",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Temas",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Perfil",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Ajuda",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
           ],
         ),
       ),
