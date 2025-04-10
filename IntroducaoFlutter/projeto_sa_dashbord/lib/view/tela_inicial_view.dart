@@ -13,6 +13,33 @@ class TelaInicial extends StatelessWidget { // Cria um widget sem estado
         ),
       ),
 
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            Text(
+              "Configurações",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Notificações",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Temas",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Perfil",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+            Text(
+              "Ajuda",
+              style: TextStyle(fontSize: 25, color: Color(0xFF5C75FF)),
+            ),
+          ],
+        ),
+      ),
+
       body: Center( // Centraliza o conteúdo da tela
         child: Column( // Organiza os widgets verticalmente
           children: [
