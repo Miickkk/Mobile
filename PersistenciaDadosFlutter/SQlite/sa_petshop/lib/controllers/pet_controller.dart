@@ -1,7 +1,6 @@
 import 'package:sa_petshop/services/petshop_dbhelper.dart';
 
 import '../models/pet_model.dart';
-import '../services/petshop_dbhelper.dart';
 
 class PetController {
   final PetShopDBHelper _dbHelper = PetShopDBHelper();
