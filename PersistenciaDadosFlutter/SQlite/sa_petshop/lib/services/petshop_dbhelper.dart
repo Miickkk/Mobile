@@ -28,22 +28,25 @@ class PetShopDBHelper {
 
   // método para cria as tabelas
   _onCreateDB(Database db, int version) async {
-    //criar a Tabela do Pet
-    await db.execute("""CREATE TABLE IF NOT EXISTS pets(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      nome TEXT NOT NULL,
-      raca TEXT NOT NULL,
-      nome_dono TEXT NOT NULL,
-      telefone_dono TEXT NOT NULL);""");
-    print("tabela pets Criada");
-    await db.execute("""CREATE TABLE IF NOT EXISTS consultas(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      pet_id INTEGER NOT NULL,
-      data_hora TEXT NOT NULL,
-      tipo_servico TEXT NOT NULL,
-      observacao TEXT NOT NULL,
-      FOREING KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE)""");
-    print("tabela consulta criada");
+    // Cria a tabela 'pets'
+    await db.execute('''CREATE TABLE IF NOT EXISTS pets(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        raca TEXTNOT NULL,
+        nome_dono TEXT NOT NULL,
+        telefone_dono TEXT NOT NULL)''');
+    print("banco pets criado");
+
+    // Cria a tabela 'consultas'
+    await db.execute('''CREATE TABLE IF NOT EXISTS consultas(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        pet_id INTEGER NOT NULL,
+        data_hora TEXT NOT NULL, 
+        tipo_servico TEXT NOT NULL,
+        observacao TEXT NOT NULL,
+        FOREIGN KEY (pet_id) REFERENCES 
+        pets(id) ON DELETE CASCADE)''');
+    print("banco consultas criado");
   }
 
   //veririfa se o banco já foi iniciado, caso contrário inicia a conexão
@@ -80,9 +83,8 @@ class PetShopDBHelper {
     if (maps.isEmpty) {
       return null;
     } else {
-      Pet.fromMap(maps.first);
+      return Pet.fromMap(maps.first);
     }
-    return null;
   }
 
   Future<int> deletePet(int id) async {
@@ -92,24 +94,31 @@ class PetShopDBHelper {
 
   //CRUD e CRIAR o Banco de Dados das Consultas
 
-  Future<int> insertConsulta(Consulta consulta) async{
+  Future<int> insertConsulta(Consulta consulta) async {
     final db = await database;
-    return await db.insert("consultas", consulta.toMap()); //insere a consulta no BD
+    return await db.insert(
+      "consultas",
+      consulta.toMap(),
+    ); //insere a consulta no BD
   }
 
-  Future<List<Consulta>> getConsultasForPet(int petId) async{
+  Future<List<Consulta>> getConsultasForPet(int petId) async {
     final db = await database;
     //consluta por PEt especifico
-    List<Map<String,dynamic>> maps =  await db.query(
-      "consultas", where: "pet_id =?", whereArgs: [petId]);
+    List<Map<String, dynamic>> maps = await db.query(
+      "consultas",
+      where: "pet_id =?",
+      whereArgs: [petId],
+      orderBy: "data_hora ASC",
+    );
     //converter a map para obj
-    return maps.map((e)=>Consulta.fromMap(e)).toList();
+    return maps.map((e) => Consulta.fromMap(e)).toList();
     //toList() -> forma abreviada de escrever um laço de repetição (forEach)
   }
 
-  Future<int> deleteConsulta(int id) async{
+  Future<int> deleteConsulta(int id) async {
     final db = await database;
     return db.delete("consultas", where: "id=?", whereArgs: [id]);
-    // delete from table consultas where id = ? , 
+    // delete from table consultas where id = ? ,
   }
 }

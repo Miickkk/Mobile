@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sa_petshop/controllers/pet_controller.dart';
-import 'package:sa_petshop/view/cadastro_pet_screen.dart';
-import 'package:sa_petshop/view/detalhe_pet_screen.dart';
+import 'package:geren_colecoes/controllers/elem_controller.dart';
+import 'package:geren_colecoes/view/registro_colecoes_screen.dart';
+import 'package:geren_colecoes/view/visu_colecoes_screen.dart';
 
-import '../models/pet_model.dart';
+import '../models/colecoes_model.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
 
   @override
   State<StatefulWidget> createState() {
@@ -14,30 +16,35 @@ class HomeScreen extends StatefulWidget {
   }
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
-  final PetController _controllerPet = PetController();
-  List<Pet> _pets = [];
+  final ColecoesController _controllerPet = ColecoesController();
+  List<Colecoes> _colecoes = [];
   bool _isLoading = true;
 
-  @override //carrega o método antes de construir a tela. se tiver dados no banco já buscar as info
+
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _carregarDados();
   }
 
+
   void _carregarDados() async {
     setState(() {
       _isLoading = true;
+      _colecoes = [];
     });
-    _pets = [];
+
+
     try {
-      _pets = await _controllerPet.readPets();
+      _colecoes = await _controllerColecoes.readColecoes();
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Erro ao Carregar os Dados $e")));
-    } finally { //execução obrigatória independente  do resultado
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Erro ao Carregar os Dados $e")));
+    } finally { 
       setState(() {
         _isLoading = false;
       });
@@ -45,22 +52,23 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   
-  //build da Tela
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Text("Meus Pets - Cliente"),),
-      body: _isLoading //operador ternário
+      appBar: AppBar(title: Text("Minhas Coleções! - Cliente"),),
+
+
+      body: _isLoading 
         ? Center(child: CircularProgressIndicator(),)
         : Padding(
           padding: EdgeInsets.all(16),
           child: ListView.builder(
-            itemCount: _pets.length,
+            itemCount: _colecoes.length,
             itemBuilder: (context,index){
-              final pet = _pets[index];
+              final colecoes = _colecoes[index];
               return ListTile(
-                title: Text("${pet.nome} - ${pet.raca}"),
+                title: Text("${pet.id!} - ${pet.nome} - ${pet.raca}"),
                 subtitle: Text("${pet.nomeDono} - ${pet.telefoneDono}"),
                 onTap: () => Navigator.push(context, 
                   MaterialPageRoute(builder: (context)=>DetalhePetScreen(petId: pet.id!))), //página de detalhes do PET
@@ -68,6 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }),
           ),
+
+          
       floatingActionButton: FloatingActionButton(
         onPressed: ()=> Navigator.push(context, MaterialPageRoute(builder: 
         (context)=> CadastroPetScreen())),
