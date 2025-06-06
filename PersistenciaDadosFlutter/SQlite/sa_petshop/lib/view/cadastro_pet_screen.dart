@@ -27,6 +27,7 @@ class _CadastroPetScreenState extends State<CadastroPetScreen> {
   _salvarPet() async{
     if(_formKey.currentState!.validate()){
       _formKey.currentState!.save();
+      
       final newPet = Pet(
         nome: _nome, 
         raca: _raca, 
