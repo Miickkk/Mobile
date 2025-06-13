@@ -1,23 +1,28 @@
-import 'package:geren_colecoes/services/colecao_dbhelper.dart';
+import 'package:geren_colecoes/services/colecoes_dbhelper.dart';
+import 'package:geren_colecoes/models/item_model.dart';
 
-import '../models/colecao_model.dart';
+class ItemColecaoController {
+  final ColecoesDBHelper _dbHelper = ColecoesDBHelper();
 
-class ColecaoController {
-  final ColecaoDBHelper _dbHelper = ColecaoDBHelper();
-
-  Future<int> createColecao(Colecao colecao) async {
-    return _dbHelper.insertColecao(colecao);
+  Future<ItemColecao?> readItemById(int id) async {
+    final map = await _dbHelper.getItemById(id);
+    if (map != null) {
+      return ItemColecao.fromMap(map);
+    }
+    return null;
   }
 
-  Future<List<Colecao>> readColecoes() async {
-    return _dbHelper.getColecoes();
+  Future<List<ItemColecao>> readItemsByColecaoId(int colecaoId) async {
+    final listMaps = await _dbHelper.getItensByColecao(colecaoId);
+    return listMaps.map((map) => ItemColecao.fromMap(map)).toList();
   }
 
-  Future<Colecao?> readColecaoById(int id) async {
-    return _dbHelper.getColecaoById(id);
+  Future<int> deleteItem(int id) async {
+    return await _dbHelper.deleteItem(id);
   }
 
-  Future<int> deleteColecao(int id) async {
-    return _dbHelper.deleteColecao(id);
+  Future<int> createItemColecao(ItemColecao item) async {
+    final id = await _dbHelper.insertItem(item.toMap());
+    return id;
   }
 }
