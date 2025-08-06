@@ -1,0 +1,408 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "exemplo_column_row",
+            "cwd": "IntroducaoFlutter\\exemplo_column_row",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_column_row (profile mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_column_row",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_column_row (release mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_column_row",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo_scaffold",
+            "cwd": "IntroducaoFlutter\\exemplo_scaffold",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_scaffold (profile mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_scaffold",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_scaffold (release mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_scaffold",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo_widgets_interacao",
+            "cwd": "IntroducaoFlutter\\exemplo_widgets_interacao",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_widgets_interacao (profile mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_widgets_interacao",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_widgets_interacao (release mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_widgets_interacao",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo_widget_exibicao",
+            "cwd": "IntroducaoFlutter\\exemplo_widget_exibicao",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_widget_exibicao (profile mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_widget_exibicao",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_widget_exibicao (release mode)",
+            "cwd": "IntroducaoFlutter\\exemplo_widget_exibicao",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "ola_mundo",
+            "cwd": "IntroducaoFlutter\\ola_mundo",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ola_mundo (profile mode)",
+            "cwd": "IntroducaoFlutter\\ola_mundo",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ola_mundo (release mode)",
+            "cwd": "IntroducaoFlutter\\ola_mundo",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "ola_mundo_dependencia",
+            "cwd": "IntroducaoFlutter\\ola_mundo_dependencia",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ola_mundo_dependencia (profile mode)",
+            "cwd": "IntroducaoFlutter\\ola_mundo_dependencia",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ola_mundo_dependencia (release mode)",
+            "cwd": "IntroducaoFlutter\\ola_mundo_dependencia",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "projeto_sa_dashbord",
+            "cwd": "IntroducaoFlutter\\projeto_sa_dashbord",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "projeto_sa_dashbord (profile mode)",
+            "cwd": "IntroducaoFlutter\\projeto_sa_dashbord",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "projeto_sa_dashbord (release mode)",
+            "cwd": "IntroducaoFlutter\\projeto_sa_dashbord",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sa01_tela_perfil",
+            "cwd": "IntroducaoFlutter\\sa01_tela_perfil",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sa01_tela_perfil (profile mode)",
+            "cwd": "IntroducaoFlutter\\sa01_tela_perfil",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sa01_tela_perfil (release mode)",
+            "cwd": "IntroducaoFlutter\\sa01_tela_perfil",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sa02_grid_image",
+            "cwd": "IntroducaoFlutter\\sa02_grid_image",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sa02_grid_image (profile mode)",
+            "cwd": "IntroducaoFlutter\\sa02_grid_image",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sa02_grid_image (release mode)",
+            "cwd": "IntroducaoFlutter\\sa02_grid_image",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sa03_to_do_list",
+            "cwd": "IntroducaoFlutter\\sa03_to_do_list",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sa03_to_do_list (profile mode)",
+            "cwd": "IntroducaoFlutter\\sa03_to_do_list",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sa03_to_do_list (release mode)",
+            "cwd": "IntroducaoFlutter\\sa03_to_do_list",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sa04_cadastro_3telas",
+            "cwd": "IntroducaoFlutter\\sa04_cadastro_3telas",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sa04_cadastro_3telas (profile mode)",
+            "cwd": "IntroducaoFlutter\\sa04_cadastro_3telas",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sa04_cadastro_3telas (release mode)",
+            "cwd": "IntroducaoFlutter\\sa04_cadastro_3telas",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "carrosel_slider",
+            "cwd": "IntroducaoFlutter\\sa02_grid_image\\carrosel_slider",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "carrosel_slider (profile mode)",
+            "cwd": "IntroducaoFlutter\\sa02_grid_image\\carrosel_slider",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "carrosel_slider (release mode)",
+            "cwd": "IntroducaoFlutter\\sa02_grid_image\\carrosel_slider",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo01_nome_usuario",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo01_nome_usuario",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo01_nome_usuario (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo01_nome_usuario",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo01_nome_usuario (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo01_nome_usuario",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo02_darkmode",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo02_darkmode",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo02_darkmode (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo02_darkmode",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo02_darkmode (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo02_darkmode",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo03_lista_tarefas",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo03_lista_tarefas",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo03_lista_tarefas (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo03_lista_tarefas",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo03_lista_tarefas (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exemplo03_lista_tarefas",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exercicio01_shared_preferences",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exercicio01_shared_preferences",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exercicio01_shared_preferences (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exercicio01_shared_preferences",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exercicio01_shared_preferences (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exercicio01_shared_preferences",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exer_meu_perfil_persistente",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exer_meu_perfil_persistente",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exer_meu_perfil_persistente (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exer_meu_perfil_persistente",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exer_meu_perfil_persistente (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SharedPreferences\\exer_meu_perfil_persistente",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplo_sqlite",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\exemplo_sqlite",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplo_sqlite (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\exemplo_sqlite",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplo_sqlite (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\exemplo_sqlite",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "geren_colecoes",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\geren_colecoes",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "geren_colecoes (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\geren_colecoes",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "geren_colecoes (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\geren_colecoes",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "sa_petshop",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\sa_petshop",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "sa_petshop (profile mode)",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\sa_petshop",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "sa_petshop (release mode)",
+            "cwd": "PersistenciaDadosFlutter\\SQlite\\sa_petshop",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

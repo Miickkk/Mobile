@@ -49,3 +49,20 @@
                O comando deve ser executado na pasta raiz do aplicativo
                   - uso do --platforms seguido do home da plataforma
                   Ex: 
+
+         # PRojeto de Vida
+
+## Possibilidades pós SENAI
+
+### Carreira de TI
+
+- Mercado de Trabalho:
+    - GitHub -  Meus PRojetos
+    - Linkedin - Minhas Competências
+    - Site Pessoal - Habilidades
+
+
+- Universidade: 
+
+
+- Cursos:          
