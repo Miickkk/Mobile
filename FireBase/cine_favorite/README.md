@@ -128,5 +128,6 @@ graph TD
 ```
 
 ## Prototipagem
+### https://www.figma.com/design/zOGCmH1PgWjrIkvjEJBvQq/prototipo-CineApp?m=dev&t=0ek7OI1oG1KoLomh-1
 
 ## Codificação
