@@ -117,7 +117,7 @@ graph TD
 
 graph TD
 
-    A[Ínicio] --> B {Login Usuário}
+    A[Ínicio] --> B{Login Usuário}
     B --> C[Inserir Email e Senha] 
     C --> D{Validar as Credenciais}
     D --> E[Sim]
