@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 
-void main() async{
+void main() async{//na main é estabelecida uam conexão com o firebase
   //garantir o carregamento dos widgets primeiro
   WidgetsFlutterBinding.ensureInitialized();
 

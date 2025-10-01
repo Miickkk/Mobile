@@ -34,7 +34,7 @@ class FavoriteMovieController {
     final movie = FavoriteMovie(
       id: movieData["id"], 
       title: movieData["title"], 
-      posterPath: movieData["poster_path"]);
+      posterPath: imagemFile.path.toString()); //arrumar o endereço da imagem
 
     //adicioanr o OBj ao FireStore
     await _db.collection("users").doc(currentUser!.uid).collection("favorite_movies")

@@ -1,81 +1,84 @@
-//classe para gerenciar o relacionamento do modelo com a interface
-
 import 'dart:io';
 
+import 'package:cine_favorite/controllers/favorite_movie_controller.dart';
 import 'package:cine_favorite/models/favorite_movie.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cine_favorite/views/search_movie_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter/material.dart';
 
-class FavoriteMovieController {
-  //atributos
-  final _auth = FirebaseAuth.instance; //conecta com Auth do Firebase
-  final _db = FirebaseFirestore.instance; //conecta com o FireStore
 
-  //Criar um User => método para buscar o usuário logado
-  User? get currentUser => _auth.currentUser;
+class FavoriteView extends StatefulWidget {
+  const FavoriteView({super.key});
 
-  //métodos para Favorite Movie
+  @override
+  State<FavoriteView> createState() => _FavoriteViewState();
+}
 
-  //addFavorite => adiciona o filme a lista de Favoritos
-  void addFavorite(Map<String,dynamic> movieData) async{
-    //usar bibliotecas path e path_provider para armazenar a img no celular
-    //baixar a imagem da internet
-    final imagemUrl = "https://image.tmdb.org/t/p/w500${movieData["poster_path"]}";
-    //https://image.tmdb.org/t/p/w500/6vbxUh6LWHGhfuPI7GrimQaXNsQ.jpg
-    final responseImg = await http.get(Uri.parse(imagemUrl));
-    //armazenar a imagem no dispositivo
-    final imagemDir = await getApplicationDocumentsDirectory();
-    final imagemFile = File("${imagemDir.path}/${movieData["id"]}.jpg");
-    await imagemFile.writeAsBytes(responseImg.bodyBytes);
 
-    //criar o OBJ no DB
-    final movie = FavoriteMovie(
-      id: movieData["id"], 
-      title: movieData["title"], 
-      posterPath: movieData["poster_path"]);
+class _FavoriteViewState extends State<FavoriteView> {
+  final _favMovieController = FavoriteMovieController();
 
-    //adicioanr o OBj ao FireStore
-    await _db.collection("users").doc(currentUser!.uid).collection("favorite_movies")
-    .doc(movie.id.toString()).set(movie.toMap());
-  }
-  
-  //listFavorite => Pegar a Lista de Filmes no BD
-  //Stream => listener, pega a lista de favoritos sempre que for modificada
-  Stream<List<FavoriteMovie>> getFavoriteMovies(){
-    //verifica se o usuário existe
-    if(currentUser ==null) return Stream.value([]); //retrona a lista vazia caso não tenha usuário
 
-    return _db.collection("users")
-    .doc(currentUser!.uid)
-    .collection("favorite_movies")
-    .snapshots()
-    .map((e)=> e.docs.map(
-      (i)=>FavoriteMovie.fromMap(i.data())).toList());
-  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Meu Filmes Favoritos"),
+        actions: [
+          IconButton(
+            onPressed: FirebaseAuth.instance.signOut, 
+            icon: Icon(Icons.logout))
+        ],
+      ),
 
-  //removeFavorite
-  void removeFavoriteMovie (int movieId) async{
-    if(currentUser == null) return;
-    await _db.collection("users").doc(currentUser!.uid).collection("favorite_movies")
-    .doc(movieId.toString()).delete();
 
-    //deletar a imagem do diretório
-    final imagemPath = await getApplicationDocumentsDirectory();
-    final imagemFile = File("${imagemPath.path}/$movieId.jpg");
-    try {
-      await imagemFile.delete();
-    } catch (e) {
-      print("erro ao deletar img");
-    }
+      body: StreamBuilder<List<FavoriteMovie>>(
+        stream: _favMovieController.getFavoriteMovies(), 
+        builder: (context, snapshot){
+          if(snapshot.hasError){
+            return Center(child: Text("Erro ao Carregar a Lista de Favoritos"),);
+          }
 
-  }
+          if(!snapshot.hasData){
+            return Center(child: CircularProgressIndicator());
+          }
 
-  //updateRating
-  void updateMovieRating (int movieId, double rating) async{
-    if(currentUser == null) return;
-    await _db.collection("users").doc(currentUser!.uid).collection("favorite_movies")
-    .doc(movieId.toString()).update({"rating":rating});
+          if(snapshot.data!.isEmpty){
+            return Center(child: Text("Nenhum Filme Adicionado aos Favoritos"),);
+          }
+
+
+          final favoriteMovies = snapshot.data!;
+          return Expanded(
+            child: GridView.builder(
+              padding: EdgeInsets.all(8), 
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                childAspectRatio: 0.7),
+              itemCount: favoriteMovies.length,
+              itemBuilder: (context,index){
+                final movie = favoriteMovies[index];
+                return Card(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: Image.file(File(movie.posterPath), fit: BoxFit.cover,)),
+                      Center(child: Text(movie.title),),
+                      Center(child: Text("Nota do Filme: ${movie.rating}"),)
+                    ],
+                  ),
+                );
+                }));
+        }),
+
+        
+      floatingActionButton: FloatingActionButton(
+        onPressed: ()=> Navigator.push(context, MaterialPageRoute(
+          builder: (context)=> SearchMovieView())),
+        child: Icon(Icons.search),),
+    );
   }
 }
