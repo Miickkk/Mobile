@@ -22,7 +22,6 @@ class _LoginViewState extends State<LoginView> {
         email: _emailField.text.trim(),
         password: _senhaField.text,
       );
-      // Aqui você pode navegar para a home, se quiser
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -43,15 +42,13 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(
         title: const Text(
           "Login",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: roxoPrincipal,
         elevation: 4,
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Center(
@@ -60,21 +57,24 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 const SizedBox(height: 20),
 
-                // ===== CAMPO EMAIL =====
                 TextField(
                   controller: _emailField,
-                  cursorColor: roxoPrincipal, // Cor da barrinha piscante
-                  style: TextStyle( // 👈 cor do texto digitado
+                  cursorColor: roxoPrincipal,
+                  style: TextStyle(
                     color: roxoPrincipal,
                     fontWeight: FontWeight.w600,
                   ),
+
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.6),
                     labelText: "Email",
                     labelStyle: TextStyle(color: roxoClaro),
                     floatingLabelStyle: TextStyle(color: roxoPrincipal),
-                    prefixIcon: Icon(Icons.email_outlined, color: roxoPrincipal),
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: roxoPrincipal,
+                    ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: roxoPrincipal, width: 2),
                       borderRadius: BorderRadius.circular(20),
@@ -89,15 +89,15 @@ class _LoginViewState extends State<LoginView> {
 
                 const SizedBox(height: 16),
 
-                // ===== CAMPO SENHA =====
                 TextField(
                   controller: _senhaField,
                   obscureText: _senhaOculta,
                   cursorColor: roxoPrincipal,
-                  style: TextStyle( // 👈 cor do texto digitado
+                  style: TextStyle(
                     color: roxoPrincipal,
                     fontWeight: FontWeight.w600,
                   ),
+
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.6),
@@ -118,6 +118,7 @@ class _LoginViewState extends State<LoginView> {
                         color: roxoPrincipal,
                       ),
                     ),
+
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: roxoPrincipal, width: 2),
                       borderRadius: BorderRadius.circular(20),
@@ -131,7 +132,6 @@ class _LoginViewState extends State<LoginView> {
 
                 const SizedBox(height: 24),
 
-                // ===== BOTÃO LOGIN =====
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -157,12 +157,12 @@ class _LoginViewState extends State<LoginView> {
 
                 const SizedBox(height: 10),
 
-                // ===== LINK REGISTRAR =====
                 TextButton(
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const RegisterView()),
+                      builder: (context) => const RegisterView(),
+                    ),
                   ),
                   child: Text(
                     "Não tem uma conta? Registre-se",

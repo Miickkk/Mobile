@@ -33,7 +33,8 @@ class _RegisterViewState extends State<RegisterView> {
         email: _emailField.text.trim(),
         password: _senhaField.text,
       );
-      Navigator.pop(context); // volta para a tela de login
+
+      Navigator.pop(context); 
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -54,15 +55,13 @@ class _RegisterViewState extends State<RegisterView> {
       appBar: AppBar(
         title: const Text(
           "Registro",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: roxoPrincipal,
         elevation: 4,
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Center(
@@ -71,7 +70,6 @@ class _RegisterViewState extends State<RegisterView> {
               children: [
                 const SizedBox(height: 20),
 
-                // ===== CAMPO EMAIL =====
                 TextField(
                   controller: _emailField,
                   cursorColor: roxoPrincipal,
@@ -79,17 +77,22 @@ class _RegisterViewState extends State<RegisterView> {
                     color: roxoPrincipal,
                     fontWeight: FontWeight.w600,
                   ),
+
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.6),
                     labelText: "Email",
                     labelStyle: TextStyle(color: roxoClaro),
                     floatingLabelStyle: TextStyle(color: roxoPrincipal),
-                    prefixIcon: Icon(Icons.email_outlined, color: roxoPrincipal),
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: roxoPrincipal,
+                    ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: roxoPrincipal, width: 2),
                       borderRadius: BorderRadius.circular(20),
                     ),
+
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: roxoClaro, width: 1.5),
                       borderRadius: BorderRadius.circular(20),
@@ -100,7 +103,6 @@ class _RegisterViewState extends State<RegisterView> {
 
                 const SizedBox(height: 16),
 
-                // ===== CAMPO SENHA =====
                 TextField(
                   controller: _senhaField,
                   obscureText: _senhaOculta,
@@ -109,6 +111,7 @@ class _RegisterViewState extends State<RegisterView> {
                     color: roxoPrincipal,
                     fontWeight: FontWeight.w600,
                   ),
+
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.6),
@@ -122,6 +125,7 @@ class _RegisterViewState extends State<RegisterView> {
                           _senhaOculta = !_senhaOculta;
                         });
                       },
+
                       icon: Icon(
                         _senhaOculta
                             ? Icons.visibility_off_outlined
@@ -142,7 +146,6 @@ class _RegisterViewState extends State<RegisterView> {
 
                 const SizedBox(height: 16),
 
-                // ===== CAMPO CONFIRMAR SENHA =====
                 TextField(
                   controller: _confSenhaField,
                   obscureText: _confSenhaOculta,
@@ -151,6 +154,7 @@ class _RegisterViewState extends State<RegisterView> {
                     color: roxoPrincipal,
                     fontWeight: FontWeight.w600,
                   ),
+
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.6),
@@ -164,6 +168,7 @@ class _RegisterViewState extends State<RegisterView> {
                           _confSenhaOculta = !_confSenhaOculta;
                         });
                       },
+
                       icon: Icon(
                         _confSenhaOculta
                             ? Icons.visibility_off_outlined
@@ -171,10 +176,12 @@ class _RegisterViewState extends State<RegisterView> {
                         color: roxoPrincipal,
                       ),
                     ),
+
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: roxoPrincipal, width: 2),
                       borderRadius: BorderRadius.circular(20),
                     ),
+
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: roxoClaro, width: 1.5),
                       borderRadius: BorderRadius.circular(20),
@@ -184,7 +191,6 @@ class _RegisterViewState extends State<RegisterView> {
 
                 const SizedBox(height: 24),
 
-                // ===== BOTÃO REGISTRAR =====
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -210,7 +216,6 @@ class _RegisterViewState extends State<RegisterView> {
 
                 const SizedBox(height: 10),
 
-                // ===== LINK LOGIN =====
                 TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Text(

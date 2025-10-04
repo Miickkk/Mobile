@@ -1,10 +1,9 @@
 import 'dart:io';
-
+import 'package:flutter/material.dart';
 import 'package:cine_favorite/controllers/favorite_movie_controller.dart';
 import 'package:cine_favorite/models/favorite_movie.dart';
 import 'package:cine_favorite/views/search_movie_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 class FavoriteView extends StatefulWidget {
   const FavoriteView({super.key});
@@ -78,53 +77,96 @@ class _FavoriteViewState extends State<FavoriteView> {
 
           final favoriteMovies = snapshot.data!;
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 8,
-                mainAxisSpacing: 8,
-                childAspectRatio: 0.7,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 0.67,
               ),
               itemCount: favoriteMovies.length,
               itemBuilder: (context, index) {
                 final movie = favoriteMovies[index];
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Stack(
                     children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.vertical(
-                              top: Radius.circular(12)),
-                          child: Image.file(
-                            File(movie.posterPath),
-                            fit: BoxFit.cover,
+
+                      Positioned.fill(
+                        child: Image.file(
+                          File(movie.posterPath),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.transparent,
+                                Colors.black.withOpacity(0.7),
+                              ],
+                            ),
+                          ),
+
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                movie.title,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+
+                              const SizedBox(height: 4),
+                              Row(
+                                children: [
+                                  Icon(Icons.star, color: Colors.amber.shade400, size: 16),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    movie.rating.toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      Center(
-                        child: Text(
-                          movie.title,
-                          style: TextStyle(
-                            color: roxoPrincipal,
-                            fontWeight: FontWeight.bold,
+
+                      Positioned.fill(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                blurRadius: 6,
+                                spreadRadius: 1,
+                                offset: const Offset(2, 4),
+                              ),
+                            ],
                           ),
-                          textAlign: TextAlign.center,
                         ),
                       ),
-                      Center(
-                        child: Text(
-                          "Nota: ${movie.rating}",
-                          style: TextStyle(color: roxoClaro),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
                     ],
                   ),
                 );

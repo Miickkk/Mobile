@@ -56,20 +56,17 @@ class _SearchMovieViewState extends State<SearchMovieView> {
       appBar: AppBar(
         title: const Text(
           "Buscar Filmes",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: roxoPrincipal,
         elevation: 4,
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            // ===== CAMPO DE BUSCA =====
             TextField(
               controller: _searchField,
               cursorColor: roxoPrincipal,
@@ -77,6 +74,7 @@ class _SearchMovieViewState extends State<SearchMovieView> {
                 color: roxoPrincipal,
                 fontWeight: FontWeight.w600,
               ),
+
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white.withOpacity(0.6),
@@ -88,10 +86,12 @@ class _SearchMovieViewState extends State<SearchMovieView> {
                   onPressed: _searchMovies,
                   icon: Icon(Icons.search, color: roxoPrincipal),
                 ),
+
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: roxoPrincipal, width: 2),
                   borderRadius: BorderRadius.circular(20),
                 ),
+
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: roxoClaro, width: 1.5),
                   borderRadius: BorderRadius.circular(20),
@@ -101,62 +101,61 @@ class _SearchMovieViewState extends State<SearchMovieView> {
 
             const SizedBox(height: 16),
 
-            // ===== LISTAGEM DE FILMES =====
             _isLoading
-                ? Center(
-                    child: CircularProgressIndicator(
+                ? Center(child: CircularProgressIndicator(color: roxoPrincipal))
+                : _movies.isEmpty
+                ? Text(
+                    "Nenhum Filme Encontrado",
+                    style: TextStyle(
                       color: roxoPrincipal,
+                      fontWeight: FontWeight.w600,
                     ),
                   )
-                : _movies.isEmpty
-                    ? Text(
-                        "Nenhum Filme Encontrado",
-                        style: TextStyle(
-                          color: roxoPrincipal,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      )
-                    : Expanded(
-                        child: ListView.builder(
-                          itemCount: _movies.length,
-                          itemBuilder: (context, index) {
-                            final movie = _movies[index];
-                            return Card(
-                              elevation: 2,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              margin: const EdgeInsets.symmetric(vertical: 8),
-                              child: ListTile(
-                                leading: movie["poster_path"] != null
-                                    ? Image.network(
-                                        "https://image.tmdb.org/t/p/w500${movie["poster_path"]}",
-                                        height: 50,
-                                      )
-                                    : Icon(Icons.movie, color: roxoPrincipal),
-                                title: Text(movie["title"]),
-                                subtitle: Text(movie["release_date"] ?? ""),
-                                trailing: IconButton(
-                                  onPressed: () async {
-                                    _favMovieController.addFavorite(movie);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        backgroundColor: roxoPrincipal,
-                                        content: Text(
-                                          "${movie["title"]} adicionado com sucesso",
-                                          style: const TextStyle(color: Colors.white),
-                                        ),
+                : Expanded(
+                    child: ListView.builder(
+                      itemCount: _movies.length,
+                      itemBuilder: (context, index) {
+                        final movie = _movies[index];
+                        return Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          child: ListTile(
+                            leading: movie["poster_path"] != null
+                                ? Image.network(
+                                    "https://image.tmdb.org/t/p/w500${movie["poster_path"]}",
+                                    height: 50,
+                                  )
+                                : Icon(Icons.movie, color: roxoPrincipal),
+                            title: Text(movie["title"]),
+                            subtitle: Text(movie["release_date"] ?? ""),
+                            trailing: IconButton(
+                              onPressed: () async {
+                                _favMovieController.addFavorite(movie);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: roxoPrincipal,
+                                    content: Text(
+                                      "${movie["title"]} adicionado com sucesso",
+                                      style: const TextStyle(
+                                        color: Colors.white,
                                       ),
-                                    );
-                                    Navigator.pop(context); // volta para favoritos
-                                  },
-                                  icon: Icon(Icons.add, color: roxoPrincipal),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
+                                    ),
+                                  ),
+                                );
+                                Navigator.pop(context); // volta para favoritos
+                              },
+
+                              icon: Icon(Icons.add, color: roxoPrincipal),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
           ],
         ),
       ),
