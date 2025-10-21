@@ -15,7 +15,7 @@ class _RegistroViewState extends State<RegistroView> {
   final TextEditingController _confirmarSenhaField = TextEditingController();
   bool _ocultarSenha = true;
   bool _ocultarConfSenha = true;
-  bool _senhaIguais = false;
+  final bool _senhaIguais = false;
 
   void _registrar() async{
     if (_senhaField.text != _confirmarSenhaField.text) return;

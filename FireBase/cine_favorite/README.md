@@ -9,9 +9,23 @@ Construir um Aplicativo do Zero - O CineFavorite permitirá criar uma conta e bu
 
 
 ## levantamento de Requistos do Projeto
-- ### Funcionais 
+### Funcionais 
+- Criar conta, login e logout de usuário.
+- Buscar filmes por palavra-chave na API TMDB.
+- Listar resultados com título, poster e nota.
+- Salvar e remover filmes favoritos.
+- Avaliar e atualizar notas dos filmes.
+- Exibir galeria personalizada de favoritos por usuário.
 
-- ### não Funcionais
+### não Funcionais
+- Desenvolvido em Flutter/Dart.
+- Autenticação e banco no Firebase (Auth + Firestore).
+- Integração com API TMDB.
+- Compatível com Android e iOS.
+- Interface intuitiva (prototipada no Figma).
+- Resposta rápida nas buscas (até 3s).
+- Segurança garantida via Firebase.
+
 
 ## Recursos do Projeto
 - Flutter /Dart
