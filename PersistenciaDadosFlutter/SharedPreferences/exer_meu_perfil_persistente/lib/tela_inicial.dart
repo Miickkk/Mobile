@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class TelaInicial extends StatefulWidget {
   @override
   State<TelaInicial> createState() => _TelaInicialState();
 }
-
 
 class _TelaInicialState extends State<TelaInicial> {
   TextEditingController _nomeController = TextEditingController();
@@ -16,14 +14,13 @@ class _TelaInicialState extends State<TelaInicial> {
   bool _darkMode = false;
   bool _salDad = false;
 
-
   @override
   void initState() {
     super.initState();
     _carregarPreferencias();
   }
 
-
+  // Carregar dados salvos
   _carregarPreferencias() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -32,17 +29,18 @@ class _TelaInicialState extends State<TelaInicial> {
       _darkMode = _prefs.getBool("darkMode") ?? false;
       _salDad = _prefs.getBool("salDad") ?? false;
     });
+  } // <-- ESTA CHAVE FALTAVA AQUI
 
-
+  // Trocar tema
   _trocarTema() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     setState(() {
       _darkMode = !_darkMode;
-      _prefs.setBool("darkMode", _darkMode); // Armazena a preferência do tema
+      _prefs.setBool("darkMode", _darkMode);
     });
   }
 
-
+  // Salvar dados
   _salvDad() async {
     _nome = _nomeController.text.trim();
     _idade = _idadeController.text.trim();
@@ -54,14 +52,13 @@ class _TelaInicialState extends State<TelaInicial> {
       );
     } else {
       _prefs.setString("nome", _nome);
-      _prefs.setString("idade", _idade); // Salva o nome e idade
-      _prefs.setBool("salDad", true); // Marca que os dados foram salvos
+      _prefs.setString("idade", _idade);
+      _prefs.setBool("salDad", true);
       _nomeController.clear();
       _idadeController.clear();
-      Navigator.pushReplacementNamed(context, "/"); // Redireciona para a tela principal
+      Navigator.pushReplacementNamed(context, "/");
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +66,7 @@ class _TelaInicialState extends State<TelaInicial> {
       data: _darkMode ? ThemeData.dark() : ThemeData.light(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Bem-Vindo ${_nome.isEmpty ? "Visitante" : _nome}"),
+          title: Text("Bem-vindo ${_nome.isEmpty ? "Visitante" : _nome}"),
           actions: [
             IconButton(
               onPressed: _trocarTema,
@@ -77,17 +74,11 @@ class _TelaInicialState extends State<TelaInicial> {
             )
           ],
         ),
-
-
         body: Padding(
           padding: EdgeInsets.all(16),
-
-
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-
-
             children: [
               Text(
                 "Salvar Dados",
