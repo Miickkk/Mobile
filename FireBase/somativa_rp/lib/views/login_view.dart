@@ -37,7 +37,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       backgroundColor: const Color(0xFF0E1F0E), 
       appBar: AppBar(
-        title: const Text("Login - Somativa RP"),
+        title: const Text("Login"),
         backgroundColor: Colors.green[800],
         centerTitle: true,
         elevation: 3,

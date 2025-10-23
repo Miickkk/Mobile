@@ -11,10 +11,10 @@ class HistoryView extends StatelessWidget {
     final uid = FirebaseAuth.instance.currentUser!.uid;
 
     final registrosStream = FirebaseFirestore.instance
-        .collection('registros_ponto') 
-        .where('uid', isEqualTo: uid) 
-        .orderBy('data', descending: true) 
-        .snapshots(); 
+        .collection('registros_ponto')
+        .where('uid', isEqualTo: uid)
+        .orderBy('data', descending: true)
+        .snapshots();
 
     return Scaffold(
       backgroundColor: const Color(0xFF0E1F0E),
@@ -59,11 +59,11 @@ class HistoryView extends StatelessWidget {
               final registro = docs[index].data() as Map<String, dynamic>;
 
               final dataHora = (registro["data"] as Timestamp).toDate();
-
               final tipo = registro["tipo"] ?? "Indefinido";
               final distancia = registro["distancia"];
               final lat = registro["latitude"];
               final lon = registro["longitude"];
+              final dentroDoRaio = registro["dentroDoRaio"] ?? true;
 
               return Card(
                 color: Colors.green[900],
@@ -72,13 +72,13 @@ class HistoryView extends StatelessWidget {
                 ),
                 margin: const EdgeInsets.symmetric(vertical: 6),
                 child: ListTile(
-                  leading: const Icon(
-                    Icons.access_time_rounded,
-                    color: Colors.greenAccent,
+                  leading: Icon(
+                    tipo.toLowerCase() == "entrada" ? Icons.login : Icons.logout,
+                    color: dentroDoRaio ? Colors.greenAccent : Colors.redAccent,
                     size: 36,
                   ),
                   title: Text(
-                    "${tipo.toString().toUpperCase()} - ${DateFormat('dd/MM/yyyy HH:mm').format(dataHora)}",
+                    "${tipo.toUpperCase()} - ${DateFormat('dd/MM/yyyy HH:mm').format(dataHora)}",
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -87,20 +87,18 @@ class HistoryView extends StatelessWidget {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (distancia != null)
-                        Text(
-                          "Distância: ${distancia.toStringAsFixed(1)} m",
-                          style: const TextStyle(color: Colors.white70),
+                      Text(
+                        dentroDoRaio
+                            ? "Local autorizado"
+                            : "Fora do local autorizado (Distância: ${distancia?.toStringAsFixed(1)} m)",
+                        style: TextStyle(
+                          color: dentroDoRaio ? Colors.greenAccent : Colors.redAccent,
                         ),
+                      ),
                       if (lat != null && lon != null)
                         Text(
                           "Localização: ${lat.toStringAsFixed(5)}, ${lon.toStringAsFixed(5)}",
                           style: const TextStyle(color: Colors.white70),
-                        )
-                      else
-                        const Text(
-                          "Localização não registrada",
-                          style: TextStyle(color: Colors.white70),
                         ),
                     ],
                   ),
