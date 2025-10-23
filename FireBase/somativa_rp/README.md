@@ -35,7 +35,7 @@ Aplicativo Mobile em Flutter para registro de ponto de funcionários utilizando 
 
 ## Diagramas
 
-1. ### Classes
+### 1. Classes
 Demonstra o funcionamento das entidades do sistema:
 
 - **User**
@@ -97,7 +97,7 @@ classDiagram
     User "1"--"1+" Ponto : "registra"
 ```
 
-2. ### Uso
+### 2. Uso
 Ações que os Atores podem fazer:
 
 - **Usuário (Employee)**:
@@ -151,9 +151,9 @@ Determina o caminho percorrido pelo ator para executar uma ação: **Login**
 ```mermaid
 graph TD
 
-    A[Início] --> B {Login Usuário}
+    A[Inicio] --> B{"Login Usuário"}
     B --> C[Inserir Email e Senha] 
-    C --> D{Validar Credenciais}
+    C --> D{"Validar Credenciais"}
     D --> E[Sim]
     E --> F[HomeView]
     D --> G[Não]
