@@ -160,9 +160,6 @@ graph TD
     G --> B
 ```
 
-## Prototipo 
-
-- EM ANDAMENTO 
 
 ### Codificação
 
