@@ -4,7 +4,7 @@ Aplicativo Mobile em Flutter para registro de ponto de funcionários utilizando 
 
 ## Objetivos
 - Registrar pontos de entrada e saída de funcionários automaticamente quando estiverem próximos ao local de trabalho.  
-- Autenticar usuários via NIF/email e senha ou reconhecimento facial (biometria).  
+- Autenticar usuários via NIF/email e senha. 
 - Armazenar registros de ponto no Firebase com data, hora e localização.  
 - Permitir consulta de histórico completo de registros de ponto por usuário.  
 - Implementar boas práticas de UI/UX e arquitetura Flutter organizada.
@@ -15,9 +15,7 @@ Aplicativo Mobile em Flutter para registro de ponto de funcionários utilizando 
 ### Funcionais
 - Login e Registro de Usuário via Firebase Authentication  
 - Registro de ponto com validação de geolocalização (até 100m do local de trabalho)  
-- Autenticação por biometria  
 - Visualização do histórico de pontos com filtros por data ou tipo de registro  
-- Possibilidade de remover registros ou adicionar observações  
 
 ### Não Funcionais
 - Interface amigável e responsiva em tons de verde  
@@ -29,7 +27,6 @@ Aplicativo Mobile em Flutter para registro de ponto de funcionários utilizando 
 - Flutter 
 - Firebase 
 - Geolocalização com Geolocator  
-- Biometria com Local Authentication  
 - VS Code  
 
 
@@ -62,7 +59,6 @@ Demonstra o funcionamento das entidades do sistema:
 
 - **Controllers**
   - AuthController → gerencia login, registro e logout  
-  - BiometricsController → gerencia autenticação biométrica  
   - LocationController → gerencia permissões e captura de localização  
   - RpdbController → gerencia CRUD do modelo Ponto  
 
@@ -104,8 +100,7 @@ Ações que os Atores podem fazer:
   - Registrar conta  
   - Login  
   - Logout  
-  - Registrar ponto (entrada/saída)  
-  - Registrar ponto via biometria  
+  - Registrar ponto (entrada/saída)   
   - Consultar histórico de pontos  
   - Adicionar observação em um registro  
   - Remover registro de ponto  
@@ -117,10 +112,7 @@ graph TD
         uc2([Login])
         uc3([Logout])
         uc4([Registrar Ponto])
-        uc5([Registrar Ponto Biometria])
-        uc6([Consultar Histórico])
-        uc7([Adicionar Observação])
-        uc8([Remover Ponto])
+        uc5([Consultar Histórico])
     end
 
     user([Usuário])
@@ -130,17 +122,11 @@ graph TD
     user --> uc3 
     user --> uc4 
     user --> uc5 
-    user --> uc6 
-    user --> uc7
-    user --> uc8
 
     uc1 --> uc2
     uc2 --> uc3
     uc2 --> uc4
     uc2 --> uc5
-    uc2 --> uc6
-    uc2 --> uc7
-    uc2 --> uc8
 ```
 
 ### 3. Fluxo
